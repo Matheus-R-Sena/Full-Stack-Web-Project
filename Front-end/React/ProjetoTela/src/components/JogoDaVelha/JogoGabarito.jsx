@@ -50,6 +50,7 @@ function Board({ xIsNext, squares, onPlay }) {
       </div>
     </>
   );
+  
 }
 
 export default function Game() {
