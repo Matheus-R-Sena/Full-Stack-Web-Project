@@ -1,12 +1,13 @@
 import React from 'react'
 import useState from 'react'
+import Board from './Board'
 
 const Game = () => {
 
     //Setup inicial
-    const [history, setHistory] = useState([Array(9).fill(null)]);
+    const [history, setHistory] = useState([Array(9).fill(null)])
     const [currentMove, setCurrentMove] = useState(0);
-
+    
     const xIsNext = currentMove % 2 === 0;
     const currentSquares = history[currentMove];
 
@@ -28,7 +29,6 @@ const Game = () => {
         } else {
             description = 'Go to game start';
         }
-
         return (
             <li key={move}>
                 <button onClick={jumpTo(move)}> {description} </button>
@@ -39,7 +39,12 @@ const Game = () => {
     return (
 
         <div className='Game'>
+            
+            <div className='game-board'> 
 
+                <Board xIsNext={xIsNext} onPlay={handlePlay}></Board>
+
+            </div>
 
         </div>
 

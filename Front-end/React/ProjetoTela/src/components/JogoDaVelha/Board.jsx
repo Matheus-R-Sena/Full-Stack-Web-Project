@@ -1,7 +1,5 @@
 const Board = ({xIsnext, squares, onPlay}) => {
 
-    
-
     const nextSquares = squares.slice(); //Shallow copy, cópia rasa, apenas para copiar, pois apenas squares não iria duplicar o array em memória.
 
     if (xIsnext) {

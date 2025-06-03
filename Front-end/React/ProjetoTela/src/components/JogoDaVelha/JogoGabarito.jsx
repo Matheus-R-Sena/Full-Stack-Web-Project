@@ -87,6 +87,8 @@ export default function Game() {
     <div className="game">
       <div className="game-board">
         <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
+
+
       </div>
       <div className="game-info">
         <ol>{moves}</ol>
