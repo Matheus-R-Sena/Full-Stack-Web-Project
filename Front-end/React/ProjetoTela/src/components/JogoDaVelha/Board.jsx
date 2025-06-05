@@ -1,3 +1,7 @@
+import React from 'react'
+import Square from './Square';
+
+
 const Board = ({xIsnext, squares, onPlay}) => {
 
     const nextSquares = squares.slice(); //Shallow copy, cópia rasa, apenas para copiar, pois apenas squares não iria duplicar o array em memória.
@@ -10,6 +14,46 @@ const Board = ({xIsnext, squares, onPlay}) => {
     }
 
     onPlay(nextSquares);
+
+    const winner = calculateWinner(squares);
+    let status;
+    if (winner){
+    status = 'The winner is '+winner;
+    } else {
+      status = 'The next player is '+ (xIsnext ? 'X' : 'O');
+    }
+
+    return (
+
+    <>
+      <div>
+        <Square></Square>
+        <Square></Square>
+        <Square></Square>
+      </div>
+    
+      <div>
+        <Square></Square>
+        <Square></Square>
+        <Square></Square>
+      </div>
+    
+      <div>
+        <Square></Square>
+        <Square></Square>
+        <Square></Square>
+      </div>
+    
+    </>
+
+    )
+
+
+
+
+
+
+
 
 }
 

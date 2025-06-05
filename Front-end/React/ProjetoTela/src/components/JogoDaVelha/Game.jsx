@@ -5,11 +5,13 @@ import Board from './Board'
 const Game = () => {
 
     //Setup inicial
-    const [history, setHistory] = useState([Array(9).fill(null)])
-    const [currentMove, setCurrentMove] = useState(0);
+    const [history, setHistory] = useState([Array(9).fill(null)]) // [[ null, null, null, null, null, null, null, null, null ]]
+    const [currentMove, setCurrentMove] = useState(0); //CurrentMove = 0
     
-    const xIsNext = currentMove % 2 === 0;
-    const currentSquares = history[currentMove];
+
+    const xIsNext = currentMove % 2 === 0; //boolean xIsNext = True
+    const currentSquares = history[currentMove]; //[[ null, null, null, null, null, null, null, null, null ]]
+
 
     function handlePlay(nextSquares){
         const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
@@ -39,10 +41,10 @@ const Game = () => {
     return (
 
         <div className='Game'>
-            
+
             <div className='game-board'> 
 
-                <Board xIsNext={xIsNext} onPlay={handlePlay}></Board>
+                <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay}></Board>
 
             </div>
 
