@@ -4,16 +4,19 @@ import Square from './Square';
 
 const Board = ({xIsnext, squares, onPlay}) => {
 
-    const nextSquares = squares.slice(); //Shallow copy, cópia rasa, apenas para copiar, pois apenas squares não iria duplicar o array em memória.
+  
+    function handleClick(i) {
 
-    if (xIsnext) {
+      if (calculateWinner(squares) || squares[i]){
+        return;
+      }
+      const nextSquares =  squares.slice();
 
-        nextSquares[i] = 'X';
-    } else {
-        nextSquares[i] = 'O';
+
+
     }
 
-    onPlay(nextSquares);
+
 
     const winner = calculateWinner(squares);
     let status;
@@ -26,24 +29,13 @@ const Board = ({xIsnext, squares, onPlay}) => {
     return (
 
     <>
-      <div>
-        <Square></Square>
-        <Square></Square>
-        <Square></Square>
+      <div className='status'> {status}</div>
+
+      <div className='Board-row'>
+        <Square />
+        <Square/>
+        <Square/>
       </div>
-    
-      <div>
-        <Square></Square>
-        <Square></Square>
-        <Square></Square>
-      </div>
-    
-      <div>
-        <Square></Square>
-        <Square></Square>
-        <Square></Square>
-      </div>
-    
     </>
 
     )
@@ -84,3 +76,8 @@ function calculateWinner (squares){
   return null;
 
 }
+
+
+
+
+    const [a, b, c] = [0, 1, 2];
