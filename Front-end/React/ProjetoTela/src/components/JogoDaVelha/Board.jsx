@@ -2,28 +2,30 @@ import React from 'react'
 import Square from './Square';
 
 
-const Board = ({xIsnext, squares, onPlay}) => {
+const Board = ({xIsNext, squares, onPlay}) => {
 
-  
     function handleClick(i) {
 
       if (calculateWinner(squares) || squares[i]){
         return;
       }
-      const nextSquares =  squares.slice();
 
+      const nextSquares = squares.slice();
 
-
+      if (xIsNext){
+        squares[i] = 'X'
+      } else {
+        squares[i] = 'O'
+      }
+      onPlay(nextSquares); 
     }
-
-
 
     const winner = calculateWinner(squares);
     let status;
     if (winner){
     status = 'The winner is '+winner;
     } else {
-      status = 'The next player is '+ (xIsnext ? 'X' : 'O');
+      status = 'The next player is '+ (xIsNext ? 'X' : 'O');
     }
 
     return (
@@ -32,18 +34,30 @@ const Board = ({xIsnext, squares, onPlay}) => {
       <div className='status'> {status}</div>
 
       <div className='Board-row'>
-        <Square />
-        <Square/>
-        <Square/>
+        <Square onSquareClick={handleClick} value={squares[0]}/>
+        <Square onSquareClick={handleClick} value={squares[1]}/>
+        <Square onSquareClick={handleClick} value={squares[2]}/>
+        
+      </div>
+
+      <div className='Board-row'>
+
+        <Square onSquareClick={handleClick} value={squares[3]}/>
+        <Square onSquareClick={handleClick} value={squares[4]}/>
+        <Square onSquareClick={handleClick} value={squares[5]}/>
+        
+      </div>
+
+      <div className='Board-row'>
+
+        <Square onSquareClick={handleClick} value={squares[6]}/>
+        <Square onSquareClick={handleClick} value={squares[7]}/>
+        <Square onSquareClick={handleClick} value={squares[8]}/>
+
       </div>
     </>
 
     )
-
-
-
-
-
 
 
 
@@ -77,7 +91,4 @@ function calculateWinner (squares){
 
 }
 
-
-
-
-    const [a, b, c] = [0, 1, 2];
+export default Board
