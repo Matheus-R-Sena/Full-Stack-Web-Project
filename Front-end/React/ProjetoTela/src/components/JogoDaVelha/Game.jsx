@@ -6,8 +6,11 @@ const Game = () => {
 
     //Setup inicial
     const [squares, setSquares] = useState(Array(9).fill(null));
+    console.log(squares)
     const [currentMove, setCurrentMove] = useState(0); //CurrentMove = 0 
     const xIsNext = currentMove % 2 === 0; //boolean xIsNext = True
+
+    console.log('Rendereizei');
    
     function handlePlay(squares){
      
@@ -27,7 +30,6 @@ const Game = () => {
             </div>
 
         </div>
-
 
     );
 

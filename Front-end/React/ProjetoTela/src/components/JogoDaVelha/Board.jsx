@@ -13,19 +13,30 @@ const Board = ({xIsNext, squares, onPlay}) => {
       const nextSquares = squares.slice();
 
       if (xIsNext){
-        squares[i] = 'X'
+        nextSquares[i] = 'X'
+        
       } else {
-        squares[i] = 'O'
+
+        nextSquares[i] = 'O'
+
       }
+
       onPlay(nextSquares); 
+
     }
 
     const winner = calculateWinner(squares);
+
     let status;
+
     if (winner){
+
     status = 'The winner is '+winner;
+
     } else {
+
       status = 'The next player is '+ (xIsNext ? 'X' : 'O');
+
     }
 
     return (
@@ -34,32 +45,30 @@ const Board = ({xIsNext, squares, onPlay}) => {
       <div className='status'> {status}</div>
 
       <div className='Board-row'>
-        <Square onSquareClick={handleClick} value={squares[0]}/>
-        <Square onSquareClick={handleClick} value={squares[1]}/>
-        <Square onSquareClick={handleClick} value={squares[2]}/>
+        <Square onSquareClick={() => handleClick(0)} value={squares[0]}/>
+        <Square onSquareClick={() => handleClick(1)} value={squares[1]}/>
+        <Square onSquareClick={() => handleClick(2)} value={squares[2]}/>
         
       </div>
 
       <div className='Board-row'>
 
-        <Square onSquareClick={handleClick} value={squares[3]}/>
-        <Square onSquareClick={handleClick} value={squares[4]}/>
-        <Square onSquareClick={handleClick} value={squares[5]}/>
+        <Square onSquareClick={() => handleClick(3)} value={squares[3]}/>
+        <Square onSquareClick={() => handleClick(4)} value={squares[4]}/>
+        <Square onSquareClick={() => handleClick(5)} value={squares[5]}/>
         
       </div>
 
       <div className='Board-row'>
 
-        <Square onSquareClick={handleClick} value={squares[6]}/>
-        <Square onSquareClick={handleClick} value={squares[7]}/>
-        <Square onSquareClick={handleClick} value={squares[8]}/>
+        <Square onSquareClick={() => handleClick(6)} value={squares[6]}/>
+        <Square onSquareClick={() => handleClick(7)} value={squares[7]}/>
+        <Square onSquareClick={() => handleClick(8)} value={squares[8]}/>
 
       </div>
     </>
 
     )
-
-
 
 }
 

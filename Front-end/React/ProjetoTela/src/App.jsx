@@ -7,24 +7,6 @@ function App() {
   return (
     <>
       <p>Texto</p>
-      
-      <div>
-        <Square/>
-        <Square/>
-        <Square/>
-      </div>
-
-      <div>
-        <Square/>
-        <Square/>
-        <Square/>
-      </div>
-
-      <div>
-        <Square/>
-        <Square/>
-        <Square/>
-      </div>
 
       <div>
         <Game/>
