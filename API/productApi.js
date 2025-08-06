@@ -17,16 +17,48 @@ app.use(express.json());
 let produtos = [
 
     {id: 1, nome: 'Notebook', preco: 3000},
-    {id: 1, nome: 'Mouse', preco: 300}
+    {id: 2, nome: 'Mouse', preco: 300},
+    {id: 3, nome: 'Teclado', preco: 400},
+    {id: 4, nome: 'Fone', preco: 500},
 
 ]
 
 //Rota Get - listar todos os produtos
 
-//essa função registra uma rota do tipo GET no seu servidor express
+//essa função registra uma rota do tipo GET no seu servidor express 
 app.get('/produtos', (req, res) => {
     res.json(produtos);
-})
+    //PERGUNTA:: imagino que o objeto produtos que é um array de objetos seja formatado para json.
+});
+
+
+//Get para retornar um produto específico
+app.get('/produtos/:id', (req, res) => {
+
+    const idDesejado = req.params.id;
+    
+    for (let i; i < produtos.length; i++){
+        if (idDesejado == produtos[i].id){
+            res.json(produtos[i]);
+            
+        }
+    }
+
+});
+
+
+//Essa função registra uma rota para criar um novo produto
+app.post('/produtos', (req, res) => {
+    const novoProduto = req.body;
+    novoProduto.id = produtos.length + 1;
+    produtos.push(novoProduto);
+    res.status(201).json(novoProduto);
+});
+
+app.listen(3000, ()=>{
+    console.log('A API está rodando em http://localhost:3000')
+});
+
 
 
 
