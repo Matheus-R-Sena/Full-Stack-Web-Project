@@ -6,7 +6,7 @@ const app = express();
 
 
 app.get('/', (req, res) => {
-  res.send('Olá, mundo!');
+  res.send('O');
 });
 
 app.listen(3000, () => {
